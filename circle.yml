@@ -9,6 +9,10 @@ machine:
     # https://circleci.com/docs/oom/#out-of-memory-errors-in-android-builds
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
 
+dependencies:
+  pre:
+    - echo y | android update sdk --no-ui --all --filter "build-tools-23.0.3,extra-android-m2repository,extra-google-m2repository"
+
 test:
   override:
     # Disable Pre-Dexing to Improve Build Performance
