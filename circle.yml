@@ -1,0 +1,16 @@
+machine:
+  java:
+    version: oraclejdk8
+  environment:
+    # Setting memory limits for the JVM
+    # https://circleci.com/docs/oom/#setting-memory-limits-for-the-jvm
+    _JAVA_OPTIONS: "-Xms512m -Xmx1024m"
+    # Out of memory errors in Android builds
+    # https://circleci.com/docs/oom/#out-of-memory-errors-in-android-builds
+    GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
+
+test:
+  override:
+    # Disable Pre-Dexing to Improve Build Performance
+    # https://circleci.com/docs/android/#disable-pre-dexing-to-improve-build-performance
+    - ./gradlew assembleDebug check -PdisablePreDex
