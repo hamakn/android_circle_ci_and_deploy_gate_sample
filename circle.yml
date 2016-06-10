@@ -1,3 +1,8 @@
+general:
+  artifacts:
+    - app/build/reports
+    - app/build/outputs
+
 machine:
   java:
     version: oraclejdk8
