@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+def isCi = "true".equals(System.getenv("CI"))
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -15,6 +17,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        if (isCi) {
+            warning 'InvalidPackage'
+            warning 'MissingConstraints'
         }
     }
 }
