@@ -24,4 +24,4 @@ test:
   override:
     # Disable Pre-Dexing to Improve Build Performance
     # https://circleci.com/docs/android/#disable-pre-dexing-to-improve-build-performance
-    - ./gradlew assembleDebug check -PdisablePreDex
+    - ./gradlew clean assembleDebug check connectedAndroidTest -PdisablePreDex
