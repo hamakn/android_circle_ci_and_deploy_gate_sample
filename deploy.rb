@@ -14,11 +14,11 @@ deploy_gate_options = [
   { key: "file", value: "@app/build/outputs/apk/app-release-unsigned.apk" },
 
   # Optional: Push message
-  { key: "message", value: "#{github}/tree/${GIT_HASH}" },
+  { key: "message", value: "#{github}/tree/#{git_hash}" },
   # Optional: Key to update distribution page
   { key: "distribution_key", value: "${DEPLOY_GATE_APP_DISTRIBUTION_KEY}" },
   # Optional: Release note
-  { key: "release_note", value: "#{github}/tree/${GIT_HASH} #{circle_ci}/${CIRCLE_BUILD_NUM}" },
+  { key: "release_note", value: "#{github}/tree/#{git_hash} #{circle_ci}/${CIRCLE_BUILD_NUM}" },
 ]
 
 def deploy_gate_option(options)
