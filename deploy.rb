@@ -11,7 +11,7 @@ deploy_gate_options = [
   # API Key for deploy
   { key: "token", value: "${DEPLOY_GATE_API_KEY}" },
   # Binary to deploy
-  { key: "file", value: "@app/build/outputs/apk/app-release-unsigned.apk" },
+  { key: "file", value: "@app/build/outputs/apk/app-release.apk" },
 
   # Optional: Push message
   { key: "message", value: "#{github}/tree/#{git_hash}" },
