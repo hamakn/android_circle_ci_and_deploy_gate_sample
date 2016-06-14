@@ -2,6 +2,12 @@ apply plugin: 'com.android.application'
 
 def isCi = "true".equals(System.getenv("CI"))
 
+// properties for local build
+Properties myProperties = new Properties()
+if (rootProject.file('my.properties').exists()) {
+    myProperties.load(rootProject.file('my.properties').newDataInputStream())
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -17,8 +23,8 @@ android {
         release {
             storeFile rootProject.file('signatures/release.keystore')
             keyAlias 'sample'
-            keyPassword System.getenv('SIGNATURE_RELEASE_KEY_PASSWORD')
-            storePassword System.getenv('SIGNATURE_RELEASE_STORE_PASSWORD')
+            keyPassword System.getenv('SIGNATURE_RELEASE_KEY_PASSWORD') ?: myProperties.getProperty('SIGNATURE_RELEASE_KEY_PASSWORD')
+            storePassword System.getenv('SIGNATURE_RELEASE_STORE_PASSWORD') ?: myProperties.getProperty('SIGNATURE_RELEASE_STORE_PASSWORD')
         }
     }
     buildTypes {
