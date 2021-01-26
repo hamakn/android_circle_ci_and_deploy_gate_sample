@@ -24,6 +24,6 @@ public class ExampleInstrumentationTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("net.hamakn.circleci_and_deploygate_sample", appContext.getPackageName());
+        assertEquals("net.kawag.circleci_and_deploygate_sample", appContext.getPackageName());
     }
 }
